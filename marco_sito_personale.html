@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marco Sapone | Ingegnere Ambientale</title>
+  <meta name="description" content="Sito personale di Marco Sapone, ingegnere ambientale specializzato in rischi naturali, protezione civile e progettazione del territorio." />
+  <style>
+    :root {
+      --surface: #ffffff;
+      --surface-soft: #eef3f6;
+      --text: #1d2730;
+      --muted: #5d6a75;
+      --primary: #3f6c84;
+      --primary-soft: #dce8ef;
+      --border: #d7e0e6;
+      --shadow: 0 10px 30px rgba(28, 52, 66, 0.08);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #fbfcfd 0%, #f4f7f9 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 248, 250, 0.88);
+      border-bottom: 1px solid rgba(215, 224, 230, 0.9);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand { font-weight: 800; letter-spacing: 0.02em; }
+    .nav { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: flex-end; }
+    .nav a { color: var(--muted); font-size: 0.95rem; font-weight: 600; }
+
+    .hero { padding: 4.5rem 0 3rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.3rem, 4vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow); }
+    .btn-secondary { border-color: var(--border); background: var(--surface); color: var(--text); }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 22px;
+      display: block;
+    }
+
+    .hero-caption {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      background: var(--surface-soft);
+      border-radius: 16px;
+      padding: 0.9rem;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    section { padding: 1.2rem 0 2.4rem; }
+    .section-head { margin-bottom: 1.2rem; }
+    .section-head h2 { margin: 0 0 0.4rem; font-size: 1.9rem; letter-spacing: -0.03em; }
+    .section-head p { margin: 0; color: var(--muted); max-width: 65ch; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 { margin: 0 0 0.4rem; font-size: 1.08rem; }
+    .card p, .card li, .timeline p, .timeline li { color: var(--muted); }
+    .about { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1rem; }
+    .info-list { display: grid; gap: 0.8rem; }
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .info-label { color: var(--muted); font-weight: 600; }
+    .info-value { font-weight: 700; text-align: right; }
+    .timeline { display: grid; gap: 1rem; }
+    .timeline-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .date {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .place { margin-top: -0.2rem; color: var(--muted); font-weight: 600; }
+    ul.clean { padding-left: 1.1rem; margin: 0.8rem 0 0; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .chip-wrap { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.8rem; }
+    .chip {
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #f8fbfd 0%, #eaf2f6 100%);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      padding: 1rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid, .about, .cards, .skills-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner { flex-direction: column; align-items: flex-start; }
+      .nav { justify-content: flex-start; }
+      .hero { padding-top: 2.5rem; }
+      h1 { font-size: 2.4rem; }
+      .hero-caption { grid-template-columns: 1fr; }
+      .info-item { flex-direction: column; }
+      .info-value { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Marco Sapone</div>
+      <nav class="nav">
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#esperienza">Esperienza</a>
+        <a href="#formazione">Formazione</a>
+        <a href="#competenze">Competenze</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Ingegnere Ambientale</span>
+          <h1>Competenze tecniche, visione del territorio, approccio operativo.</h1>
+          <p>
+            Sono Marco Sapone, ingegnere per l'Ambiente e il Territorio, iscritto all'Ordine degli Ingegneri di Torino.
+            Mi occupo di gare tecniche, modellazione idraulica, sistemi GIS e progettazione di interventi sul territorio,
+            con una particolare attenzione ai rischi naturali e alla protezione civile.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contatti">Contattami</a>
+            <a class="btn btn-secondary" href="#esperienza">Scopri il mio percorso</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img class="hero-photo" src="Foto CV.jpg" alt="Foto professionale di Marco Sapone" />
+          <div class="hero-caption">
+            <div class="mini-card"><strong>Ambito</strong>Ingegneria ambientale e territorio</div>
+            <div class="mini-card"><strong>Focus</strong>Rischi naturali e protezione civile</div>
+            <div class="mini-card"><strong>Ruolo attuale</strong>Libero professionista / Tender Manager</div>
+            <div class="mini-card"><strong>Base</strong>Torino</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="chi-sono">
+      <div class="container">
+        <div class="section-head">
+          <h2>Chi sono</h2>
+          <p>Un profilo che unisce preparazione tecnica, conoscenza del territorio e capacità di operare in contesti complessi.</p>
+        </div>
+
+        <div class="about">
+          <div class="card">
+            <p>
+              Sono un ingegnere ambientale con formazione specifica in rischi naturali e protezione civile. Nel mio percorso ho maturato
+              esperienza nella redazione di offerte tecniche per gare infrastrutturali, nella modellazione idraulica con HEC-RAS,
+              nell'utilizzo di sistemi GIS e nella progettazione di opere di sistemazione idraulico-fluviale.
+            </p>
+            <p>
+              Parallelamente all'attività professionale, svolgo da anni il ruolo di soccorritore esecutore 118. Questa esperienza ha rafforzato
+              il mio senso di responsabilità, la gestione dello stress e la capacità di prendere decisioni con lucidità anche in situazioni critiche.
+            </p>
+            <p>
+              Il mio obiettivo è contribuire a progetti utili e concreti, in cui competenze tecniche e attenzione alla sicurezza del territorio
+              possano tradursi in valore reale.
+            </p>
+          </div>
+
+          <div class="card info-list">
+            <div class="info-item"><span class="info-label">Iscrizione Ordine</span><span class="info-value">Torino n. 15043</span></div>
+            <div class="info-item"><span class="info-label">Titolo</span><span class="info-value">Ingegnere per l'Ambiente e il Territorio</span></div>
+            <div class="info-item"><span class="info-label">Domicilio</span><span class="info-value">Torino</span></div>
+            <div class="info-item"><span class="info-label">Lingue</span><span class="info-value">Italiano, Inglese, Spagnolo</span></div>
+            <div class="info-item"><span class="info-label">Interessi</span><span class="info-value">Trekking, ambiente, arrampicata, fai-da-te</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="esperienza">
+      <div class="container">
+        <div class="section-head">
+          <h2>Esperienza</h2>
+          <p>Un percorso costruito tra progettazione, gestione tecnica, monitoraggi ambientali e attività operative sul territorio.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="date">Gen 2023 - oggi</span>
+            <h3>Libero professionista / Tender Manager</h3>
+            <div class="place">Piemontecnica Studio Associato</div>
+            <ul class="clean">
+              <li>Redazione di offerte tecniche per gare d'appalto in ambito infrastrutturale.</li>
+              <li>Modellazione idraulica con HEC-RAS e utilizzo di sistemi GIS.</li>
+              <li>Progettazione di opere di sistemazione idraulico-fluviale.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <span class="date">Apr 2022 - Gen 2023</span>
+            <h3>Collaboratore</h3>
+            <div class="place">Studio Geologico Tecnico Ambientale</div>
+            <ul class="clean">
+              <li>Pianificazione e gestione di monitoraggi ambientali.</li>
+              <li>Redazione di relazioni tecniche ambientali.</li>
+              <li>Supporto a relazioni e piani di gestione del rischio naturale.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <span class="date">Nov 2016 - oggi</span>
+            <h3>Soccorritore esecutore 118</h3>
+            <div class="place">Angeli Assistenze Sanitarie (FVS)</div>
+            <ul class="clean">
+              <li>Abilitazione al servizio di Emergenza-Urgenza 118.</li>
+              <li>Abilitazione all'utilizzo del Defibrillatore Semiautomatico (DAE).</li>
+              <li>Attività sul territorio in contesti di emergenza e assistenza sanitaria.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <span class="date">Sett 2015 - Sett 2021</span>
+            <h3>Tutor e coordinamento attività educative</h3>
+            <div class="place">Altre esperienze</div>
+            <ul class="clean">
+              <li>Supporto allo studio per studenti di elementari, medie e superiori.</li>
+              <li>Programmazione e coordinamento di centri estivi ed eventi sul territorio.</li>
+              <li>Gestione della documentazione organizzativa.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formazione">
+      <div class="container">
+        <div class="section-head">
+          <h2>Formazione</h2>
+          <p>Una formazione tecnica orientata all'ingegneria ambientale, al rischio naturale e alla protezione del territorio.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Laurea Magistrale in Ingegneria per l'Ambiente e il Territorio</h3>
+            <p><strong>Politecnico di Torino</strong><br />Nov 2020 - Lug 2023 · LM35 · 110/110 e Lode</p>
+            <p>Tesi: valutazione dell'impatto dovuto agli aumenti di temperatura sulle portate di alcune sorgenti piemontesi.</p>
+          </article>
+
+          <article class="card">
+            <h3>Laurea Triennale in Ingegneria Civile e Ambientale</h3>
+            <p><strong>Università di Pavia</strong><br />Ott 2017 - Sett 2020 · 101/110</p>
+            <p>Percorso a indirizzo ambientale con focus su geotecnica, tecnica delle costruzioni, ecologia applicata e sistemazione dei bacini idrografici.</p>
+          </article>
+
+          <article class="card">
+            <h3>Diploma Perito Agrario</h3>
+            <p><strong>Istituto Tecnico Agrario Calvino</strong><br />Sett 2012 - Giu 2017</p>
+            <p>Specializzazione in gestione ambiente e territorio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="competenze">
+      <div class="container">
+        <div class="section-head">
+          <h2>Competenze</h2>
+          <p>Strumenti e capacità sviluppate tra studio, professione e attività operative.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card">
+            <h3>Competenze tecniche</h3>
+            <div class="chip-wrap">
+              <span class="chip">HEC-RAS</span>
+              <span class="chip">QGIS / ArcMap</span>
+              <span class="chip">AutoCAD</span>
+              <span class="chip">Microsoft Project</span>
+              <span class="chip">R-Studio</span>
+              <span class="chip">PTV Vissim</span>
+              <span class="chip">Pacchetto Adobe</span>
+              <span class="chip">Microsoft Office</span>
+              <span class="chip">Modellazione idraulica</span>
+              <span class="chip">Sistemi GIS</span>
+              <span class="chip">Offerte tecniche</span>
+              <span class="chip">Monitoraggi ambientali</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Soft skills</h3>
+            <div class="chip-wrap">
+              <span class="chip">Problem solving</span>
+              <span class="chip">Organizzazione</span>
+              <span class="chip">Comunicazione</span>
+              <span class="chip">Leadership</span>
+              <span class="chip">Gestione dello stress</span>
+              <span class="chip">Lavoro in team</span>
+              <span class="chip">Responsabilità</span>
+              <span class="chip">Capacità decisionale</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contatti</h2>
+          <p>Per collaborazioni, progetti o opportunità professionali.</p>
+        </div>
+
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:saponemarco98@gmail.com">saponemarco98@gmail.com</a></p>
+          <p><strong>PEC:</strong> <a href="mailto:marco.sapone@ingpec.eu">marco.sapone@ingpec.eu</a></p>
+          <p><strong>Telefono:</strong> <a href="tel:+393451184341">+39 345 1184341</a></p>
+          <p><strong>GitHub:</strong> <a href="#">Aggiungi qui il tuo link GitHub</a></p>
+          <p><strong>LinkedIn:</strong> <a href="#">Aggiungi qui il tuo profilo LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Marco Sapone · Sito personale</div>
+  </footer>
+</body>
+</html>
